@@ -104,7 +104,16 @@ public:
         print_params(bestParams_, stream);
         Logger::info("----------------------------------------------------\n");
         Logger::info("Autotuned parameters:\n");
-        Logger::info("%s", stream.str().c_str());
+        print_params(bestParams_);
+			IndexParams::const_iterator it;
+			for(it=bestParams_.begin(); it!=bestParams_.end(); ++it) 
+			{
+				std::stringstream oss;
+				std::string mystr;
+				oss << it->first << " : " << it->second << std::endl;
+				mystr=oss.str();
+				Logger::info(oss.str().c_str());
+		    }			
         Logger::info("----------------------------------------------------\n");
 
         bestIndex_ = create_index_by_type(dataset_, bestParams_, distance_);
@@ -114,7 +123,16 @@ public:
         print_params(bestSearchParams_, stream);
         Logger::info("----------------------------------------------------\n");
         Logger::info("Search parameters:\n");
-        Logger::info("%s", stream.str().c_str());
+        print_params(bestSearchParams_);
+			
+			for(it=bestSearchParams_.begin(); it!=bestSearchParams_.end(); ++it) 
+			{
+				std::stringstream oss;
+				std::string mystr;
+				oss << it->first << " : " << it->second << std::endl;
+				mystr=oss.str();
+				Logger::info(oss.str().c_str());
+		    }	
         Logger::info("----------------------------------------------------\n");
     }
 

@@ -42,7 +42,8 @@ namespace cvflann
 
 class Logger
 {
-    Logger() : stream(stdout), logLevel(FLANN_LOG_WARN) {}
+    Logger() : stream(stdout), logLevel(FLANN_LOG_WARN) {} // FLANN_LOG_INFO
+
 
     ~Logger()
     {
@@ -72,6 +73,12 @@ class Logger
 
     int _log(int level, const char* fmt, va_list arglist)
     {
+		/*
+		// HACK BENNI
+		FILE* f = fopen("D:/HiveAnalyzer/logme.log", "a+");
+		vfprintf(f, fmt, arglist);
+		fclose(f);*/
+
         if (level > logLevel ) return -1;
         int ret = vfprintf(stream, fmt, arglist);
         return ret;

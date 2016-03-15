@@ -146,6 +146,11 @@ public:
     CV_WRAP cvflann::flann_distance_t getDistance() const;
     CV_WRAP cvflann::flann_algorithm_t getAlgorithm() const;
 
+	CV_WRAP void* getIndex() const
+	{
+		return this->index;
+	};
+
 protected:
     cvflann::flann_distance_t distType;
     cvflann::flann_algorithm_t algo;
